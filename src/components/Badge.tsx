@@ -12,12 +12,16 @@ const tones: Record<BadgeTone, string> = {
 export function Badge({
   children,
   tone = "neutral",
+  compact = false,
 }: {
   children: React.ReactNode;
   tone?: BadgeTone;
+  compact?: boolean;
 }) {
   return (
-    <span className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-bold ${tones[tone]}`}>
+    <span
+      className={`inline-flex items-center rounded-full border text-xs font-bold ${compact ? "px-2 py-0.5" : "px-3 py-1"} ${tones[tone]}`}
+    >
       {children}
     </span>
   );

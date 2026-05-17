@@ -8,7 +8,6 @@ export function Filters({ filters }: { filters: IdeaFilters }) {
     <details className="group" open={hasActiveFilters}>
       <summary className="flex w-fit cursor-pointer list-none items-center gap-3 rounded-full bg-[#7b351c] px-6 py-4 text-base font-bold text-[#fff6df] shadow-[0_12px_24px_rgba(75,35,16,0.24)] transition hover:bg-[#5b2815] [&::-webkit-details-marker]:hidden">
         Kereső
-        <span className="text-lg leading-none transition group-open:rotate-180">⌄</span>
       </summary>
       <form className="mt-4 grid gap-4 rounded-[26px] border border-[#c98e4d] bg-[#f5ecd9] p-5 shadow-[0_18px_38px_rgba(92,46,18,0.16)] md:grid-cols-[1.4fr_1fr_1fr_1fr_auto]">
         <label className="block">
