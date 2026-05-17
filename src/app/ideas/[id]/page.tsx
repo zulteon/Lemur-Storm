@@ -24,34 +24,34 @@ export default async function IdeaDetailPage({
         title={idea.title}
         description={idea.one_liner}
         action={
-          <Link href="/ideas" className="rounded border border-stone-200 bg-white px-4 py-2 text-sm font-semibold text-stone-700 hover:bg-stone-100">
-            Back to ideas
+          <Link href="/ideas" className="rounded-full border border-[#c98e4d] bg-[#f5ecd9] px-5 py-3 text-sm font-bold text-[#7b351c] hover:bg-[#f0dfbd]">
+            Vissza az ötletekhez
           </Link>
         }
       />
       <div className="grid gap-5 lg:grid-cols-[1fr_360px]">
         <section className="space-y-5">
-          <Panel title="Core review">
-            <Detail label="Theme" value={idea.theme} />
-            <Detail label="Target group" value={idea.target_group} />
-            <Detail label="Problem" value={idea.problem} large />
-            <Detail label="Solution" value={idea.solution} large />
-            <Detail label="Uniqueness" value={idea.uniqueness} large />
-            <Detail label="AI role" value={idea.ai_role} large />
+          <Panel title="Alap áttekintés">
+            <Detail label="Téma" value={idea.theme} />
+            <Detail label="Célcsoport" value={idea.target_group} />
+            <Detail label="Probléma" value={idea.problem} large />
+            <Detail label="Megoldás" value={idea.solution} large />
+            <Detail label="Egyediség" value={idea.uniqueness} large />
+            <Detail label="AI szerepe" value={idea.ai_role} large />
           </Panel>
           <Panel title="SWOT">
-            <Detail label="Strength" value={idea.swot_strength} large />
-            <Detail label="Weakness" value={idea.swot_weakness} large />
-            <Detail label="Opportunity" value={idea.swot_opportunity} large />
-            <Detail label="Threat" value={idea.swot_threat} large />
+            <Detail label="Erősség" value={idea.swot_strength} large />
+            <Detail label="Gyengeség" value={idea.swot_weakness} large />
+            <Detail label="Lehetőség" value={idea.swot_opportunity} large />
+            <Detail label="Veszély" value={idea.swot_threat} large />
           </Panel>
-          <Panel title="Decision notes">
-            <Detail label="Rejection reason" value={idea.rejection_reason || "No rejection reason recorded."} large />
-            <Detail label="Revival strategy" value={idea.revival_strategy || "No revival strategy recorded."} large />
+          <Panel title="Döntési jegyzetek">
+            <Detail label="Elutasítás oka" value={idea.rejection_reason || "Nincs rögzített elutasítási ok."} large />
+            <Detail label="Felélesztési stratégia" value={idea.revival_strategy || "Nincs rögzített felélesztési stratégia."} large />
           </Panel>
         </section>
         <aside className="space-y-5">
-          <Panel title="Classification">
+          <Panel title="Besorolás">
             <div className="flex flex-wrap gap-2">
               <Badge tone="blue">{labelize(idea.source_type)}</Badge>
               <Badge tone={idea.status === "shortlisted" ? "green" : idea.status === "rejected" ? "red" : "amber"}>
@@ -59,19 +59,19 @@ export default async function IdeaDetailPage({
               </Badge>
               <Badge tone={idea.bin === "none" ? "neutral" : "violet"}>{labelize(idea.bin)}</Badge>
             </div>
-            <Detail label="Production cost" value={labelize(idea.production_cost)} />
-            <Detail label="Production time" value={labelize(idea.production_time)} />
-            <Detail label="Created" value={new Date(idea.created_at).toLocaleDateString()} />
-            <Detail label="Updated" value={new Date(idea.updated_at).toLocaleDateString()} />
+            <Detail label="Gyártási költség" value={labelize(idea.production_cost)} />
+            <Detail label="Gyártási idő" value={labelize(idea.production_time)} />
+            <Detail label="Létrehozva" value={new Date(idea.created_at).toLocaleDateString("hu-HU")} />
+            <Detail label="Frissítve" value={new Date(idea.updated_at).toLocaleDateString("hu-HU")} />
           </Panel>
-          <Panel title="Scores">
-            <Score label="Total" value={idea.score_total} />
-            <Score label="Market" value={idea.score_market} />
-            <Score label="Feasibility" value={idea.score_feasibility} />
-            <Score label="Wildness" value={idea.score_wildness} />
-            <Score label="Scalability" value={idea.scalability} max={10} />
-            <Score label="Risk" value={idea.risk} max={10} />
-            <Score label="Potential" value={idea.potential} max={10} />
+          <Panel title="Pontszámok">
+            <Score label="Összesen" value={idea.score_total} />
+            <Score label="Piac" value={idea.score_market} />
+            <Score label="Megvalósíthatóság" value={idea.score_feasibility} />
+            <Score label="Vadság" value={idea.score_wildness} />
+            <Score label="Skálázhatóság" value={idea.scalability} max={10} />
+            <Score label="Kockázat" value={idea.risk} max={10} />
+            <Score label="Potenciál" value={idea.potential} max={10} />
           </Panel>
         </aside>
       </div>
@@ -81,8 +81,8 @@ export default async function IdeaDetailPage({
 
 function Panel({ title, children }: { title: string; children: React.ReactNode }) {
   return (
-    <section className="rounded-md border border-stone-200 bg-white p-5 shadow-sm">
-      <h3 className="mb-4 text-sm font-semibold uppercase tracking-wide text-stone-500">{title}</h3>
+    <section className="rounded-[26px] border border-[#c98e4d] bg-[#f5ecd9] p-5 shadow-[0_10px_24px_rgba(92,46,18,0.08)]">
+      <h3 className="mb-4 font-serif text-2xl font-black text-[#572208]">{title}</h3>
       <div className="grid gap-4">{children}</div>
     </section>
   );
@@ -91,8 +91,8 @@ function Panel({ title, children }: { title: string; children: React.ReactNode }
 function Detail({ label, value, large = false }: { label: string; value: string; large?: boolean }) {
   return (
     <div>
-      <dt className="text-xs font-medium uppercase text-stone-400">{label}</dt>
-      <dd className={`mt-1 text-stone-800 ${large ? "text-sm leading-6" : "text-sm font-medium"}`}>{value}</dd>
+      <dt className="text-xs font-bold uppercase tracking-wide text-[#b26324]">{label}</dt>
+      <dd className={`mt-1 text-[#572208] ${large ? "text-base leading-7" : "text-sm font-semibold"}`}>{value}</dd>
     </div>
   );
 }
@@ -103,11 +103,11 @@ function Score({ label, value, max = 100 }: { label: string; value: number; max?
   return (
     <div>
       <div className="flex items-center justify-between text-sm">
-        <span className="font-medium text-stone-700">{label}</span>
-        <span className="font-semibold text-stone-950">{value}</span>
+        <span className="font-semibold text-[#7a351c]">{label}</span>
+        <span className="font-black text-[#572208]">{value}</span>
       </div>
-      <div className="mt-2 h-2 rounded bg-stone-100">
-        <div className="h-2 rounded bg-emerald-600" style={{ width: `${width}%` }} />
+      <div className="mt-2 h-2 rounded-full bg-[#ead4a8]">
+        <div className="h-2 rounded-full bg-[#8b3f0f]" style={{ width: `${width}%` }} />
       </div>
     </div>
   );

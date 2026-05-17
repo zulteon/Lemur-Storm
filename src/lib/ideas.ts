@@ -159,5 +159,32 @@ export async function appendIdea(input: NewIdeaInput) {
 }
 
 export function labelize(value: string) {
-  return value.replaceAll("_", " ");
+  const labels: Record<string, string> = {
+    all: "Mind",
+    wild_rng: "Vad generált",
+    standard_rng: "Standard generált",
+    manual: "Kézi",
+    new: "Új",
+    ai_filtered: "AI előszűrt",
+    human_review: "Emberi áttekintés",
+    shortlisted: "Kiemelt",
+    validation: "Validálás",
+    build: "Építés",
+    rejected: "Elutasítva",
+    none: "Nincs bin",
+    too_broad: "Túl tág",
+    no_buyer: "Nincs vevő",
+    too_hard: "Túl nehéz",
+    weak_monetization: "Gyenge monetizáció",
+    no_team_fit: "Nem csapat-fit",
+    spark_bin: "Szikra bin",
+    dead_bin: "Halott bin",
+    low: "Alacsony",
+    medium: "Közepes",
+    high: "Magas",
+    short: "Rövid",
+    long: "Hosszú",
+  };
+
+  return labels[value] ?? value.replaceAll("_", " ");
 }

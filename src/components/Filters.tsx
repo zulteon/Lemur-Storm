@@ -3,28 +3,28 @@ import { bins, labelize, sourceTypes, statuses, type IdeaFilters } from "@/lib/i
 
 export function Filters({ filters }: { filters: IdeaFilters }) {
   return (
-    <form className="grid gap-3 rounded-md border border-stone-200 bg-white p-4 shadow-sm md:grid-cols-[1.4fr_1fr_1fr_1fr_auto]">
+    <form className="grid gap-4 rounded-[26px] border border-[#c98e4d] bg-[#f5ecd9] p-5 shadow-[0_10px_24px_rgba(92,46,18,0.08)] md:grid-cols-[1.4fr_1fr_1fr_1fr_auto]">
       <label className="block">
-        <span className="text-xs font-medium uppercase text-stone-500">Search</span>
+        <span className="text-xs font-bold uppercase tracking-wide text-[#9a4b12]">Keresés</span>
         <input
           name="q"
           defaultValue={filters.q ?? ""}
-          placeholder="title, one-liner, theme, audience"
-          className="mt-1 h-10 w-full rounded border border-stone-200 bg-white px-3 text-sm outline-none focus:border-emerald-500"
+          placeholder="cím, egysoros, téma, célcsoport"
+          className="mt-1 h-11 w-full rounded-full border border-[#d5a05f] bg-[#fff8e8] px-4 text-sm text-[#572208] outline-none placeholder:text-[#b77a3b] focus:border-[#8b3f0f]"
         />
       </label>
-      <Select label="Source" name="source_type" value={filters.source_type} options={sourceTypes} />
-      <Select label="Status" name="status" value={filters.status} options={statuses} />
-      <Select label="Bin" name="bin" value={filters.bin} options={bins} />
+      <Select label="Forrás" name="source_type" value={filters.source_type} options={sourceTypes} />
+      <Select label="Állapot" name="status" value={filters.status} options={statuses} />
+      <Select label="Kupac" name="bin" value={filters.bin} options={bins} />
       <div className="flex items-end gap-2">
-        <button className="h-10 rounded bg-stone-950 px-4 text-sm font-semibold text-white hover:bg-stone-800">
-          Filter
+        <button className="h-11 rounded-full bg-[#7b351c] px-5 text-sm font-bold text-[#fff6df] hover:bg-[#5b2815]">
+          Szűrés
         </button>
         <Link
           href="/ideas"
-          className="flex h-10 items-center rounded border border-stone-200 px-3 text-sm font-medium text-stone-700 hover:bg-stone-100"
+          className="flex h-11 items-center rounded-full border border-[#c98e4d] px-4 text-sm font-bold text-[#7b351c] hover:bg-[#f0dfbd]"
         >
-          Reset
+          Törlés
         </Link>
       </div>
     </form>
@@ -44,13 +44,13 @@ function Select({
 }) {
   return (
     <label className="block">
-      <span className="text-xs font-medium uppercase text-stone-500">{label}</span>
+      <span className="text-xs font-bold uppercase tracking-wide text-[#9a4b12]">{label}</span>
       <select
         name={name}
         defaultValue={value ?? "all"}
-        className="mt-1 h-10 w-full rounded border border-stone-200 bg-white px-3 text-sm outline-none focus:border-emerald-500"
+        className="mt-1 h-11 w-full rounded-full border border-[#d5a05f] bg-[#fff8e8] px-4 text-sm text-[#572208] outline-none focus:border-[#8b3f0f]"
       >
-        <option value="all">All</option>
+        <option value="all">Mind</option>
         {options.map((option) => (
           <option key={option} value={option}>
             {labelize(option)}

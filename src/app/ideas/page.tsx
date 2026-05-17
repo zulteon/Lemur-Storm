@@ -16,20 +16,20 @@ export default async function IdeasPage({
   return (
     <AppShell>
       <PageHeader
-        eyebrow="Review queue"
-        title="Idea cards"
-        description="Scan AI-generated and manually captured product ideas. Filter the queue, open details, and move promising cards toward validation."
+        eyebrow="Lemur Storm"
+        title="Ötletkártyák"
+        description="AI-generált és kézzel rögzített ötletek belső áttekintése. Gyors szűrés, tiszta kártyák, kevesebb zaj."
         action={
-          <Link href="/ideas/new" className="rounded bg-emerald-700 px-4 py-2 text-sm font-semibold text-white hover:bg-emerald-800">
-            New idea
+          <Link href="/ideas/new" className="rounded-full bg-[#7b351c] px-6 py-4 text-base font-bold text-[#fff6df] hover:bg-[#5b2815]">
+            Új ötlet
           </Link>
         }
       />
       <div className="space-y-5">
         <Filters filters={filters} />
-        <div className="flex items-center justify-between text-sm text-stone-500">
-          <span>{ideas.length} ideas visible</span>
-          <span>Sorted by latest update</span>
+        <div className="flex items-center justify-between text-sm font-semibold text-[#8b4b20]">
+          <span>{ideas.length} ötlet látható</span>
+          <span>Legutóbbi frissítés szerint</span>
         </div>
         <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
           {ideas.map((idea) => (
@@ -37,8 +37,8 @@ export default async function IdeasPage({
           ))}
         </div>
         {ideas.length === 0 ? (
-          <div className="rounded-md border border-dashed border-stone-300 bg-white p-10 text-center text-sm text-stone-500">
-            No ideas match the current filters.
+          <div className="rounded-[26px] border border-dashed border-[#c98e4d] bg-[#f5ecd9] p-10 text-center text-sm text-[#7a351c]">
+            Nincs találat ezekkel a szűrőkkel.
           </div>
         ) : null}
       </div>

@@ -14,18 +14,18 @@ export default async function BinsPage() {
   return (
     <AppShell>
       <PageHeader
-        eyebrow="Sorting table"
-        title="Bins"
-        description="Review the shape of the idea backlog by bin. Spark and dead bins make it easier to revisit edge cases later."
+        eyebrow="Rendezőasztal"
+        title="Kupacok"
+        description="Az ötletek kupacok szerint rendezve. A szikra és halott kupacok segítenek később visszanézni a határeseteket."
       />
       <div className="space-y-6">
         {grouped.map(({ bin, ideas: binIdeas }) => (
-          <section key={bin} className="rounded-md border border-stone-200 bg-white p-4 shadow-sm">
+          <section key={bin} className="rounded-[26px] border border-[#c98e4d] bg-[#f5ecd9] p-5 shadow-[0_10px_24px_rgba(92,46,18,0.08)]">
             <div className="mb-4 flex items-center justify-between">
               <div className="flex items-center gap-3">
-                <h3 className="text-lg font-semibold text-stone-950">{labelize(bin)}</h3>
+                <h3 className="font-serif text-3xl font-black text-[#572208]">{labelize(bin)}</h3>
                 <Badge tone={bin === "none" ? "neutral" : bin === "spark_bin" ? "green" : "violet"}>
-                  {binIdeas.length} ideas
+                  {binIdeas.length} ötlet
                 </Badge>
               </div>
             </div>
@@ -36,8 +36,8 @@ export default async function BinsPage() {
                 ))}
               </div>
             ) : (
-              <p className="rounded border border-dashed border-stone-200 p-5 text-sm text-stone-500">
-                No ideas in this bin yet.
+              <p className="rounded-[18px] border border-dashed border-[#d5a05f] p-5 text-sm text-[#7a351c]">
+                Ebben a kupacban még nincs ötlet.
               </p>
             )}
           </section>

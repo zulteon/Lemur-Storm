@@ -1,12 +1,12 @@
 type BadgeTone = "neutral" | "green" | "amber" | "red" | "blue" | "violet";
 
 const tones: Record<BadgeTone, string> = {
-  neutral: "border-stone-200 bg-stone-100 text-stone-700",
-  green: "border-emerald-200 bg-emerald-50 text-emerald-700",
-  amber: "border-amber-200 bg-amber-50 text-amber-800",
-  red: "border-rose-200 bg-rose-50 text-rose-700",
-  blue: "border-sky-200 bg-sky-50 text-sky-700",
-  violet: "border-violet-200 bg-violet-50 text-violet-700",
+  neutral: "border-[#c78b4a] bg-[#f4e8cf] text-[#6b2d12]",
+  green: "border-[#7d9b64] bg-[#edf0d6] text-[#48622e]",
+  amber: "border-[#d09a4b] bg-[#f8e7bb] text-[#7a351c]",
+  red: "border-[#b86a4a] bg-[#f3d6c8] text-[#763018]",
+  blue: "border-[#9d8a67] bg-[#f0e5c7] text-[#5f3b1f]",
+  violet: "border-[#b88a6b] bg-[#f2dec7] text-[#743a1d]",
 };
 
 export function Badge({
@@ -17,7 +17,7 @@ export function Badge({
   tone?: BadgeTone;
 }) {
   return (
-    <span className={`inline-flex items-center rounded border px-2 py-0.5 text-xs font-medium ${tones[tone]}`}>
+    <span className={`inline-flex items-center rounded-full border px-3 py-1 text-xs font-bold ${tones[tone]}`}>
       {children}
     </span>
   );
