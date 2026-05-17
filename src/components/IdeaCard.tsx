@@ -47,9 +47,8 @@ export function IdeaCard({ idea }: { idea: Idea }) {
         </div>
       </div>
       <div className="mx-5 mb-5 border-t border-[#ddb171] pt-4">
-        <div className="mb-2 flex items-center justify-between">
+        <div className="mb-2">
           <span className="text-xs font-bold uppercase tracking-wide text-[#a65b1e]">Átlagpont</span>
-          <span className="font-serif text-2xl font-black text-[#7b351c]">{averageScore}/100</span>
         </div>
         <div className="h-4 overflow-hidden rounded-full border border-[#c98e4d] bg-[#ead4a8] shadow-inner">
           <div
