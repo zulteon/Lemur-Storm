@@ -17,10 +17,14 @@ function statusTone(status: Idea["status"]) {
 }
 
 export function IdeaCard({ idea }: { idea: Idea }) {
+  const averageScore = Math.round(
+    (idea.score_total + idea.score_market + idea.score_feasibility + idea.score_wildness) / 4,
+  );
+
   return (
     <Link
       href={`/ideas/${idea.id}`}
-      className="group flex min-h-72 flex-col justify-between rounded-[26px] border border-[#c98e4d] bg-[#f5ecd9] p-5 shadow-[0_10px_24px_rgba(92,46,18,0.08)] transition hover:-translate-y-0.5 hover:bg-[#f8efd9] hover:shadow-[0_14px_28px_rgba(92,46,18,0.14)]"
+      className="group flex min-h-72 flex-col justify-between rounded-[26px] border border-[#c98e4d] bg-[#f5ecd9] p-5 shadow-[0_18px_38px_rgba(74,31,11,0.22)] transition hover:-translate-y-0.5 hover:bg-[#f8efd9] hover:shadow-[0_24px_46px_rgba(74,31,11,0.28)]"
     >
       <div className="space-y-4">
         <div className="flex flex-wrap gap-2">
@@ -29,7 +33,7 @@ export function IdeaCard({ idea }: { idea: Idea }) {
           {idea.bin !== "none" ? <Badge tone="violet">{labelize(idea.bin)}</Badge> : null}
         </div>
         <div>
-          <h2 className="font-serif text-2xl font-black leading-7 text-[#572208] group-hover:text-[#8b3f0f]">
+          <h2 className="font-serif text-2xl font-black leading-7 text-[#7b351c] group-hover:text-[#9a4b12]">
             {idea.title}
           </h2>
           <p className="mt-3 line-clamp-3 text-base leading-7 text-[#7a351c]">{idea.one_liner}</p>
@@ -45,21 +49,18 @@ export function IdeaCard({ idea }: { idea: Idea }) {
           </div>
         </dl>
       </div>
-      <div className="mt-5 grid grid-cols-4 gap-2 border-t border-[#ddb171] pt-4 text-center">
-        <Score label="Össz" value={idea.score_total} />
-        <Score label="Piac" value={idea.score_market} />
-        <Score label="Épít" value={idea.score_feasibility} />
-        <Score label="Vad" value={idea.score_wildness} />
+      <div className="mt-5 border-t border-[#ddb171] pt-4">
+        <div className="mb-2 flex items-center justify-between">
+          <span className="text-xs font-bold uppercase tracking-wide text-[#a65b1e]">Átlagpont</span>
+          <span className="font-serif text-2xl font-black text-[#7b351c]">{averageScore}/100</span>
+        </div>
+        <div className="h-4 overflow-hidden rounded-full border border-[#c98e4d] bg-[#ead4a8] shadow-inner">
+          <div
+            className="h-full rounded-full bg-gradient-to-r from-[#7b351c] via-[#a85b1f] to-[#d29242]"
+            style={{ width: `${Math.max(0, Math.min(100, averageScore))}%` }}
+          />
+        </div>
       </div>
     </Link>
-  );
-}
-
-function Score({ label, value }: { label: string; value: number }) {
-  return (
-    <div>
-      <div className="text-lg font-black text-[#572208]">{value}</div>
-      <div className="text-[11px] font-bold uppercase text-[#a65b1e]">{label}</div>
-    </div>
   );
 }

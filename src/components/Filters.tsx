@@ -2,32 +2,40 @@ import Link from "next/link";
 import { bins, labelize, sourceTypes, statuses, type IdeaFilters } from "@/lib/ideas";
 
 export function Filters({ filters }: { filters: IdeaFilters }) {
+  const hasActiveFilters = Boolean(filters.q || filters.source_type || filters.status || filters.bin);
+
   return (
-    <form className="grid gap-4 rounded-[26px] border border-[#c98e4d] bg-[#f5ecd9] p-5 shadow-[0_10px_24px_rgba(92,46,18,0.08)] md:grid-cols-[1.4fr_1fr_1fr_1fr_auto]">
-      <label className="block">
-        <span className="text-xs font-bold uppercase tracking-wide text-[#9a4b12]">Keresés</span>
-        <input
-          name="q"
-          defaultValue={filters.q ?? ""}
-          placeholder="cím, egysoros, téma, célcsoport"
-          className="mt-1 h-11 w-full rounded-full border border-[#d5a05f] bg-[#fff8e8] px-4 text-sm text-[#572208] outline-none placeholder:text-[#b77a3b] focus:border-[#8b3f0f]"
-        />
-      </label>
-      <Select label="Forrás" name="source_type" value={filters.source_type} options={sourceTypes} />
-      <Select label="Állapot" name="status" value={filters.status} options={statuses} />
-      <Select label="Kupac" name="bin" value={filters.bin} options={bins} />
-      <div className="flex items-end gap-2">
-        <button className="h-11 rounded-full bg-[#7b351c] px-5 text-sm font-bold text-[#fff6df] hover:bg-[#5b2815]">
-          Szűrés
-        </button>
-        <Link
-          href="/ideas"
-          className="flex h-11 items-center rounded-full border border-[#c98e4d] px-4 text-sm font-bold text-[#7b351c] hover:bg-[#f0dfbd]"
-        >
-          Törlés
-        </Link>
-      </div>
-    </form>
+    <details className="group" open={hasActiveFilters}>
+      <summary className="flex w-fit cursor-pointer list-none items-center gap-3 rounded-full bg-[#7b351c] px-6 py-4 text-base font-bold text-[#fff6df] shadow-[0_12px_24px_rgba(75,35,16,0.24)] transition hover:bg-[#5b2815] [&::-webkit-details-marker]:hidden">
+        Kereső
+        <span className="text-lg leading-none transition group-open:rotate-180">⌄</span>
+      </summary>
+      <form className="mt-4 grid gap-4 rounded-[26px] border border-[#c98e4d] bg-[#f5ecd9] p-5 shadow-[0_18px_38px_rgba(92,46,18,0.16)] md:grid-cols-[1.4fr_1fr_1fr_1fr_auto]">
+        <label className="block">
+          <span className="text-xs font-bold uppercase tracking-wide text-[#9a4b12]">Keresés</span>
+          <input
+            name="q"
+            defaultValue={filters.q ?? ""}
+            placeholder="cím, egysoros, téma, célcsoport"
+            className="mt-1 h-11 w-full rounded-full border border-[#d5a05f] bg-[#fff8e8] px-4 text-sm text-[#572208] outline-none placeholder:text-[#b77a3b] focus:border-[#8b3f0f]"
+          />
+        </label>
+        <Select label="Forrás" name="source_type" value={filters.source_type} options={sourceTypes} />
+        <Select label="Állapot" name="status" value={filters.status} options={statuses} />
+        <Select label="Kupac" name="bin" value={filters.bin} options={bins} />
+        <div className="flex items-end gap-2">
+          <button className="h-11 rounded-full bg-[#7b351c] px-5 text-sm font-bold text-[#fff6df] hover:bg-[#5b2815]">
+            Szűrés
+          </button>
+          <Link
+            href="/ideas"
+            className="flex h-11 items-center rounded-full border border-[#c98e4d] px-4 text-sm font-bold text-[#7b351c] hover:bg-[#f0dfbd]"
+          >
+            Törlés
+          </Link>
+        </div>
+      </form>
+    </details>
   );
 }
 

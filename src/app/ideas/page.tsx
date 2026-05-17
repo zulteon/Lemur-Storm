@@ -18,7 +18,7 @@ export default async function IdeasPage({
       <PageHeader
         eyebrow="Lemur Storm"
         title="Ötletkártyák"
-        description="AI-generált és kézzel rögzített ötletek belső áttekintése. Gyors szűrés, tiszta kártyák, kevesebb zaj."
+        description="Egyedi ötletek madagaszkárból"
         action={
           <Link href="/ideas/new" className="rounded-full bg-[#7b351c] px-6 py-4 text-base font-bold text-[#fff6df] hover:bg-[#5b2815]">
             Új ötlet
